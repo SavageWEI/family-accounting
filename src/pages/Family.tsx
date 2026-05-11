@@ -6,7 +6,7 @@ import type { Family, FamilyMember } from '../types'
 import { Pencil, Plus, Copy, LogIn, Trash2, Check, X } from 'lucide-react'
 
 export default function Family() {
-  const { user, currentFamily, setCurrentFamily, familyMembers, setFamilyMembers } = useAppStore()
+  const { user, currentFamily, setCurrentFamily, familyMembers, setFamilyMembers, bills, setBills } = useAppStore()
   const [loading, setLoading] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
   const [showJoin, setShowJoin] = useState(false)
@@ -153,6 +153,8 @@ export default function Family() {
     await supabase.from('family_members').delete().eq('id', memberId)
 
     setFamilyMembers(familyMembers.filter((m) => m.id !== memberId))
+    // 同时从页面缓存中移除该成员的账单
+    setBills(bills.filter((b) => b.user_id !== member.user_id))
   }
 
   function copyInviteCode() {
