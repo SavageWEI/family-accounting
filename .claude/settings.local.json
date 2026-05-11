@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(node -e ' *)",
+      "Bash(npx vite *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(gh auth *)",
+      "Bash(winget install *)",
+      "Bash(npx --yes gh auth status)",
+      "Bash(where gh *)",
+      "Bash(where github *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(ssh-keyscan github.com >> ~/.ssh/known_hosts 2>&1 && git remote set-url origin git@github.com:SavageWEI/family-accounting.git && ssh -T git@github.com 2>&1)",
+      "Bash(ssh-keygen -t ed25519 -C \"savagewei@github\" -f ~/.ssh/id_ed25519 -N \"\")",
+      "WebFetch(domain:family-accounting-jet.vercel.app)",
+      "Bash(git commit *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Savage\\.ssh"
+    ]
+  }
+}

@@ -141,7 +141,17 @@ export default function Family() {
   }
 
   async function handleRemoveMember(memberId: string) {
+    const member = familyMembers.find((m) => m.id === memberId)
+    if (!member) return
+
+    // 删除该成员在此家庭中的所有账单
+    await supabase.from('bills').delete()
+      .eq('family_id', currentFamily!.id)
+      .eq('user_id', member.user_id)
+
+    // 删除成员记录
     await supabase.from('family_members').delete().eq('id', memberId)
+
     setFamilyMembers(familyMembers.filter((m) => m.id !== memberId))
   }
 
